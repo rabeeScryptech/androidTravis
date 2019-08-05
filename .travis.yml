@@ -31,7 +31,6 @@ before_install:
   - echo no | avdmanager create avd --force -n test -k "system-images;android-$EMULATOR_VERSION;$ABI"
 
 script:
-  - cd android
   - ./gradlew assembleDebugAndroidTest -PdisablePreDex --continue --stacktrace
   - $ANDROID_HOME/emulator/emulator -avd test -no-window &
   - bash android-wait-for-emulator
